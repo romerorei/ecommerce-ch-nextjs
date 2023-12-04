@@ -12,7 +12,7 @@ const Menu = () => {
     }
 
     return (
-        <>
+        <div className='z-40'>
             <div onClick={handleMenu}>
                 <Image
                     alt="Menu icon"
@@ -24,7 +24,7 @@ const Menu = () => {
             </div>
 
             <MenuList open={open} setOpen={setOpen}/>
-        </>
+        </div>
     )
 }
 
