@@ -1,18 +1,19 @@
 import Link from "next/link"
-import { mockDataCategories } from "@/data/categories"
+import { getCategories  } from "@/lib/getCategories"
 
 interface Props {
     children: React.ReactNode;
   }
 
-const ProductosLayout: React.FC<Props> = ({children}) => {
+const ProductosLayout: React.FC<Props> = async ({children}) => {
 
-
+const categories = await getCategories()
 
     return (
         <div className="container m-auto px-4">
             <nav className="flex gap-10 py-4">
-                { mockDataCategories.map(category => <Link key={category} href={`/products/${category}`} className="capitalize" >{category}</Link>)}
+                    <Link href={`/products/all`} className="capitalize" >All</Link>
+                { categories.map((category:string) => <Link key={category} href={`/products/${encodeURIComponent(category)}`} className="capitalize" >{category}</Link>)}
             </nav>
             {children}
         </div>

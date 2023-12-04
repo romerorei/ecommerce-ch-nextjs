@@ -20,6 +20,7 @@ const MenuList = ({open, setOpen}:any) => {
                 <nav className="flex flex-col gap-5 px-4 text-white">
                     <Link onClick={handleClose} href={"/products/all"}>Home</Link>
                     <Link onClick={handleClose} href={"/login"}>Login</Link>
+                    <Link onClick={handleClose} href={"/carrito"}>Carrito</Link>
                     <Link onClick={handleClose} href={"/nosotros"}>Nosotros</Link>
                     <Link onClick={handleClose} href={"/contacto"}>Contacto</Link>
                     <Link onClick={handleClose} href={"/admin"}>Admin</Link>

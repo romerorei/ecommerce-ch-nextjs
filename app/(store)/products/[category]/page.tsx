@@ -1,28 +1,52 @@
-// import ProductCard from "@/components/products/ProductCard"
-import { mockData } from "@/data/products"
+import { Suspense } from "react";
+import { Metadata } from 'next';
 import { Product } from "@/interfaces/products"
 import { ProductCard } from "@/components/products/ProductCard"
+import { revalidatePath } from 'next/cache';
+
+interface ProductProps {
+    product: Product;
+    params: { category: string };
+}
 
 
-export const generateMetadata = async ({params}: { params: any } ) => {
+export const generateMetadata = async ({params}: { params: Metadata } ) => {
     return {
         title: `STORE - ${params.category}`
     }
 }
 
+export function generateStaticParams (){
+    return [
+        {category: 'all'},
+        {category: "men's clothing"},
+        {category: "women's clothing"},
+        {category: "jewelery"},
+        {category: "electronics"}
+    ]
+}
 
-const Productos: React.FC<{ params: { category: string } }> = ({ params }) => {
+export const revalidate = 3600
+
+const Productos: React.FC<ProductProps> = async ({ params }) => {
     const { category } = params
+    console.log('page:',params)
 
-    const items = category === 'all' ? mockData : mockData.filter(product => product.category === category)
+    const items = await fetch(`http://localhost:3000/api/products/${category}`,
+    { cache:'no-store'
+    }).then(r => r.json())
+
+    //console.log(items)
 
     return (
         <div className="container m-auto pt-8 mb-6">
             <h2 className="text-4xl text-bold">Productos</h2>
             <hr/>
-            <section className="gap-2 px-4 grid grid-cols-2 sm:grid-cols-4">
-                { items.map(product => <ProductCard key={product.id} item={product} />) }
-            </section>
+                <section className="gap-2 px-4 grid grid-cols-2 sm:grid-cols-4">
+                    <Suspense fallback={<div>Cargando...</div>} >
+                        { items.map((product:Product) => <ProductCard key={product.id} item={product} />) }
+                    </Suspense>
+                </section>
             <hr/>
         </div>
     )

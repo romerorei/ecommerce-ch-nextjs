@@ -1,6 +1,6 @@
 "use client"
 
-const Boton = ({children, className = '', ...args}) => {
+const Boton = ({children, className = '', ...args}: {children: React.ReactNode, className: string }) => {
 
     return (
         <button

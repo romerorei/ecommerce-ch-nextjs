@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { CartProvider } from '@/components/context/CartContext'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Providers } from './providers'
@@ -9,17 +10,15 @@ export const metadata: Metadata = {
   description: 'Compra de todo',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({children,}: {children: React.ReactNode}) {
   return (
     <html lang="en" >
       <body className={inter.className}>
-      <Providers>
+        <CartProvider>
+          <Providers>
             {children}
-      </Providers>
+          </Providers>
+        </CartProvider>
       </body>
     </html>
   )

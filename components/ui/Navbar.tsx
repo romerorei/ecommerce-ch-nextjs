@@ -4,12 +4,15 @@ import Menu from "./Menu"
 import SearchBar from "./SearchBar"
 // import logo from '@/assets/untitled.svg'
 import Link from 'next/link';
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+
+
   return (
     <header className="text-white py-3 bg-gray-900 body-font">
       <div className="container mx-auto flex flex-wrap px-5 flex-col md:flex-row items-center">
-        <Link href={`/products/all`} className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <Link href={`/`} className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
           <Image
             alt="Logo"
             src={logo}
