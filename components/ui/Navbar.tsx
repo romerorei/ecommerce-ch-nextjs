@@ -5,6 +5,8 @@ import SearchBar from "./SearchBar"
 // import logo from '@/assets/untitled.svg'
 import Link from 'next/link';
 import { usePathname } from "next/navigation";
+import { CartComponent } from "./CartComponent";
+
 
 const Navbar = () => {
 
@@ -24,6 +26,7 @@ const Navbar = () => {
         <div className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
             <SearchBar/>
         </div>
+        <CartComponent/>
         <Menu/>
       </div>
     </header>

@@ -1,6 +1,8 @@
 "use client"
 
-const Boton = ({children, className = '', ...args}: {children: React.ReactNode, className: string }) => {
+import React from 'react';
+
+const Boton = ({children, className = '', ...args}: {children: React.ReactNode, className?: string } & React.ButtonHTMLAttributes<HTMLButtonElement>) => {
 
     return (
         <button

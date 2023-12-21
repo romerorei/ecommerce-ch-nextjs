@@ -5,10 +5,9 @@ import { ProductCard } from "@/components/products/ProductCard"
 import { revalidatePath } from 'next/cache';
 
 interface ProductProps {
-    product: Product;
+    //product: Product;
     params: { category: string };
 }
-
 
 export const generateMetadata = async ({params}: { params: Metadata } ) => {
     return {
@@ -19,8 +18,8 @@ export const generateMetadata = async ({params}: { params: Metadata } ) => {
 export function generateStaticParams (){
     return [
         {category: 'all'},
-        {category: "men's clothing"},
-        {category: "women's clothing"},
+        {category: "mens-clothing"},
+        {category: "womens-clothing"},
         {category: "jewelery"},
         {category: "electronics"}
     ]
@@ -30,14 +29,13 @@ export const revalidate = 3600
 
 const Productos: React.FC<ProductProps> = async ({ params }) => {
     const { category } = params
-    console.log('page:',params)
+    //console.log('page:',params)
 
-    const items = await fetch(`http://localhost:3000/api/products/${category}`,
+    const items = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${category}`,
     { cache:'no-store'
     }).then(r => r.json())
 
-    //console.log(items)
-
+    //console.log(items[1])
     return (
         <div className="container m-auto pt-8 mb-6">
             <h2 className="text-4xl text-bold">Productos</h2>
