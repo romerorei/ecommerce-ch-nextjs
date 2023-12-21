@@ -5,14 +5,22 @@ import { db } from "@/firebase/config";
 
 
 export async function GET(request:Request, {params}: {params:string}) {
-  const {category}:any = params;
 
-  const productsRef = collection(db, "products")
+  try {
+    const {category}:any = params;
 
-  const q = category === 'all' ? productsRef : query(productsRef,where('category','==',category))
+    const productsRef = collection(db, "products")
 
-  const querySnapshot = await getDocs(q)
-  const docs = querySnapshot.docs.map(doc => doc.data())
+    const q = category === 'all' ? productsRef : query(productsRef,where('category','==',category))
 
-  return NextResponse.json(docs)
+    const querySnapshot = await getDocs(q)
+    const docs = querySnapshot.docs.map(doc => doc.data())
+
+    return NextResponse.json(docs)
+
+  } catch (error) {
+    console.error('Error en la función GET:', error);
+    return NextResponse.json(new Error('Error interno del servidor'));
+  }
+
 }

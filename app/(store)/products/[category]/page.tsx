@@ -15,7 +15,7 @@ export const generateMetadata = async ({params}: { params: Metadata } ) => {
     }
 }
 
-export function generateStaticParams (){
+export async function generateStaticParams (){
     return [
         {category: 'all'},
         {category: "mens-clothing"},

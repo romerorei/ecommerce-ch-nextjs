@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { getCategories  } from "@/lib/getCategories"
+//import { getCategories  } from "@/lib/getCategories"
 
 interface Props {
     children: React.ReactNode;
@@ -7,7 +7,7 @@ interface Props {
 
 const ProductosLayout: React.FC<Props> = async ({children}) => {
 
-const categories = await getCategories()
+const categories = ['all', "mens-clothing", "womens-clothing", "jewelery", "electronics"]
 
     return (
         <div className="container m-auto px-4">

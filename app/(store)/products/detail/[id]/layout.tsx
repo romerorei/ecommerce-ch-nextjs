@@ -7,7 +7,7 @@ interface Props {
 
 const ProductosLayout: React.FC<Props> = async ({children}) => {
 
- const category = await  getCategories()
+ const category = ['all', "mens-clothing", "womens-clothing", "jewelery", "electronics"]
 
     return (
         <div className=" bg-white container mt-2 m-auto px-4">
