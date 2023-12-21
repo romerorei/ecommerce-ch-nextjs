@@ -30,23 +30,10 @@ paused: "danger",
 vacation: "warning",
 };
 
-    // const handleDelete = async (id:string) => {
-
-    //     console.log(id)
-    //     try{
-    //         await deleteDoc(doc(db, "products", id))
-    //         console.log(`Producto con ID ${id} actualizado correctamente`);
-
-    //         // Actualizar el estado local después de la eliminación
-    //         setData((prevData) => prevData.filter((item) => item.id !== id));
-
-    //     } catch (error){
-    //         console.error('Error al eliminar el documento:', error);
-    //     }
-    // }, []);
 
 
 const ProductsTableAdmin: React.FC<{ itemList: ItemProps[] }> = ({ itemList })  => {
+
     //console.log(itemList)
     const [data, setData] = useState(itemList);
 

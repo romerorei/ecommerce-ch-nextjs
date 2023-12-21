@@ -5,11 +5,11 @@ import Link from "next/link"
 
 import {Card, CardBody, CardFooter, Image as ImageNXUI} from "@nextui-org/react";
 
-interface Props {
+interface ProductCardProps {
   item : Product
 }
 
-export const ProductCard = ({ item }:Props) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ item }) => {
 
 
   return (

@@ -1,11 +1,25 @@
 import { Suspense } from "react";
 import { Metadata } from 'next';
-import { Product } from "@/interfaces/products"
+//import { Product } from "@/interfaces/products"
 import { ProductCard } from "@/components/products/ProductCard"
 import { revalidatePath } from 'next/cache';
+import { getCategories } from '../../../../lib/getCategories';
 
+
+export interface Product {
+    id: number | string;
+    title: string;
+    price: number;
+    description: string;
+    category: string;
+    image: string;
+    rating: {
+      rate: number;
+      count: number;
+    };
+  }
 interface ProductProps {
-    //product: Product;
+    //product: Product
     params: { category: string };
 }
 
@@ -28,21 +42,27 @@ export async function generateStaticParams (){
 export const revalidate = 3600
 
 const Productos: React.FC<ProductProps> = async ({ params }) => {
-    const { category } = params
-    //console.log('page:',params)
+    const { category }:any = params
 
-    const items = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/products/${category}`,
-    { cache:'no-store'
-    }).then(r => r.json())
+    //AQUI
+    // const items = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/products/${category}`,
+    // { cache:'no-store'
+    // }).then(r => r.json())
 
-    //console.log(items[1])
+    const items = await getCategories(category)
+    type Item = typeof items[0];
+    console.log(items)
+    if (!items) {
+        return <div>Categoria no encontrada</div>;
+      }
+
     return (
         <div className="container m-auto pt-8 mb-6">
             <h2 className="text-4xl text-bold">Productos</h2>
             <hr/>
                 <section className="gap-2 px-4 grid grid-cols-2 sm:grid-cols-4">
                     <Suspense fallback={<div>Cargando...</div>} >
-                        { items.map((product:Product) => <ProductCard key={product.id} item={product} />) }
+                        { items.map((product:any) => <ProductCard key={product.id} item={product} />) }
                     </Suspense>
                 </section>
             <hr/>

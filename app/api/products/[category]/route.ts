@@ -4,7 +4,8 @@ import { collection, deleteDoc, doc, getDocs, query, setDoc, updateDoc, where } 
 import { db } from "@/firebase/config";
 
 
-export async function GET(request:Request, {params}: {params:string}) {
+export async function GET(_:any, {params}: {params:string}) {
+  // AQUI
 
   try {
     const {category}:any = params;
