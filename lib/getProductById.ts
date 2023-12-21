@@ -13,7 +13,7 @@ export const getProductsById = async (id:number | string) => {
   //     throw new Error('Fallo la obtencion de datos')
   // }
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/product/${id}`,
+  const response = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/product/${id}`,
   {cache: "no-store"
   }).then(r => r.json())
   //console.log(response)

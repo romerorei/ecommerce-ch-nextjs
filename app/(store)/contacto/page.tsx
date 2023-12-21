@@ -21,7 +21,7 @@ const Contacto: React.FC = () => {
     e.preventDefault()
     //console.log(values)
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contacto`,
+    const response = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/contacto`,
     {
       method: "POST",
       body: JSON.stringify(values)

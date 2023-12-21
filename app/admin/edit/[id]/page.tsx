@@ -9,7 +9,7 @@ interface EditPageProps {
 
 const EditPage: React.FC<EditPageProps> = async ({ params }) => {
     const { id } = params
-    const item = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/product/${id}`,
+    const item = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/product/${id}`,
     {cache: "no-store"
     }).then(r => r.json())
     //const item = await getProductsById(id)

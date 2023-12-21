@@ -5,7 +5,7 @@ import LogoutButton from "@/components/admin/LogoutButton";
 
 const ProductsAdmin = async () => {
   const category = 'all'
-  const itemList = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${category}`,
+  const itemList = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/products/${category}`,
   { cache:'no-store'}).then(r => r.json())
   //console.log(itemList)
 

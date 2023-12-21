@@ -31,7 +31,7 @@ const Productos: React.FC<ProductProps> = async ({ params }) => {
     const { category } = params
     //console.log('page:',params)
 
-    const items = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${category}`,
+    const items = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/products/${category}`,
     { cache:'no-store'
     }).then(r => r.json())
 
