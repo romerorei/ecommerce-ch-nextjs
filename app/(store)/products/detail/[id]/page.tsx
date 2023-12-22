@@ -29,10 +29,10 @@ const ProductDetail: React.FC<ProductProps> = async ({ params }) => {
   console.log('page', id)
 
 
-  const item = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/product/${id}`,
-  {cache: "no-store"
-  }).then(r => r.json())
-  //const item = await getProductsById(id)
+  // const item = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/product/${id}`,
+  // {cache: "no-store"
+  // }).then(r => r.json())
+  const item = await getProductsById(id)
   console.log({item})
 
   if (!item) {

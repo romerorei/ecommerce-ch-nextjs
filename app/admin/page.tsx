@@ -25,7 +25,7 @@ const ProductsAdmin: React.FC = async  () => {
 
   const itemList:any = await getCategories(category)
 
-  console.log(itemList)
+  //console.log(itemList)
   return (
     <>
       <LogoutButton/>
