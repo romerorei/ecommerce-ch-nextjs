@@ -4,6 +4,7 @@ import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, C
 import Link from "next/link";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "@/firebase/config";
+import { getCategories } from "@/lib/getCategories";
 
 interface ItemProps {
     id:          string;
@@ -31,8 +32,7 @@ vacation: "warning",
 };
 
 
-
-const ProductsTableAdmin: React.FC<{ itemList: ItemProps[] }> = ({ itemList })  => {
+const ProductsTableAdmin: React.FC<{ itemList: ItemProps[] }> = ( {itemList} )  => {
 
     //console.log(itemList)
     const [data, setData] = useState(itemList);

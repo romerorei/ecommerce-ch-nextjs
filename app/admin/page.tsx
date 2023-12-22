@@ -3,32 +3,29 @@ import ProductsTableAdmin from "@/components/admin/ProductsTableAdmin";
 import LogoutButton from "@/components/admin/LogoutButton";
 import { getCategories } from "@/lib/getCategories";
 
-export interface Product {
-  id: number | string;
+interface Rating {
+  rate: number;
+  count: number;
+}
+
+interface Product {
+  id: string;
   title: string;
-  price: number;
+  image: string;
   description: string;
   category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-}
-
-interface ProductsAdminState {
-  itemList: Product[];
-  loading: boolean;
-  error: string | null;
+  inStock: number;
+  price: number;
+  rating?: Rating;
 }
 
 
-
-const ProductsAdmin = async () => {
+const ProductsAdmin: React.FC = async  () => {
   const category = 'all'
 
-  const itemList = await getCategories(category)
- //console.log(itemList)
+  const itemList:any = await getCategories(category)
+
+  console.log(itemList)
   return (
     <>
       <LogoutButton/>
